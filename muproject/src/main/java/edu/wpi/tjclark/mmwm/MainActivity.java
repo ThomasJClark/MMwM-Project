@@ -1,6 +1,7 @@
 package edu.wpi.tjclark.mmwm;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -8,8 +9,10 @@ import android.os.Bundle;
 
 public class MainActivity extends Activity {
 
-    private ControlMode controlMode;
     private SensorManager sensorManager;
+    private BluetoothManager bluetoothManager;
+    private BluetoothHelper bluetoothHelper;
+    private ControlMode controlMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +20,11 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         this.sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        this.bluetoothManager = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE);
+
+        this.bluetoothHelper = new BluetoothHelper(this, this.bluetoothManager);
+        this.bluetoothHelper.connect();
+
         this.controlMode = new FlickAndSweepControlMode();
     }
 
