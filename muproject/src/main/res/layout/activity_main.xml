@@ -11,35 +11,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="C"
-            android:id="@+id/button_c1" android:layout_alignParentTop="true"
+            android:id="@+id/c1" android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="D"
-            android:id="@+id/button_d1" android:layout_below="@+id/button_c1"
+            android:id="@+id/d1" android:layout_below="@+id/c1"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="E"
-            android:id="@+id/button_e1" android:layout_below="@+id/button_d1"
+            android:id="@+id/e1" android:layout_below="@+id/d1"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="F"
-            android:id="@+id/button_f1" android:layout_below="@+id/button_e1"
+            android:id="@+id/f1" android:layout_below="@+id/e1"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="G"
-            android:id="@+id/button_g1" android:layout_below="@+id/button_f1"
+            android:id="@+id/g1" android:layout_below="@+id/f1"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"/>
+    <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Connect"
+            android:id="@+id/connect" android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"/>
 </RelativeLayout>
