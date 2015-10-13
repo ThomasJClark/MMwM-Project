@@ -6,7 +6,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -28,7 +27,7 @@ public class MainActivity extends Activity {
      *
      * @see BluetoothHelper#sendNotes(int)
      */
-    private class SendNote implements Button.OnTouchListener {
+    private class SendNote implements Button.OnClickListener {
         final int note;
 
         /**
@@ -40,10 +39,8 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            Log.i(TAG, "onTouch" + this.note);
+        public void onClick(View v) {
             MainActivity.this.bluetoothHelper.sendNotes(this.note);
-            return true;
         };
     }
 
@@ -53,19 +50,19 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         this.cButton = (Button) findViewById(R.id.c1);
-        this.cButton.setOnTouchListener(new SendNote(BluetoothHelper.NOTE_C1));
+        this.cButton.setOnClickListener(new SendNote(BluetoothHelper.NOTE_C1));
 
         this.dButton = (Button) findViewById(R.id.d1);
-        this.dButton.setOnTouchListener(new SendNote(BluetoothHelper.NOTE_D1));
+        this.dButton.setOnClickListener(new SendNote(BluetoothHelper.NOTE_D1));
 
         this.eButton = (Button) findViewById(R.id.e1);
-        this.eButton.setOnTouchListener(new SendNote(BluetoothHelper.NOTE_E1));
+        this.eButton.setOnClickListener(new SendNote(BluetoothHelper.NOTE_E1));
 
         this.fButton = (Button) findViewById(R.id.f1);
-        this.fButton.setOnTouchListener(new SendNote(BluetoothHelper.NOTE_F1));
+        this.fButton.setOnClickListener(new SendNote(BluetoothHelper.NOTE_F1));
 
         this.gButton = (Button) findViewById(R.id.g1);
-        this.gButton.setOnTouchListener(new SendNote(BluetoothHelper.NOTE_G1));
+        this.gButton.setOnClickListener(new SendNote(BluetoothHelper.NOTE_G1));
 
         this.connect = (Button) findViewById(R.id.connect);
         this.connect.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +82,7 @@ public class MainActivity extends Activity {
         this.bluetoothHelper = new BluetoothHelper(this, this.bluetoothManager);
         this.bluetoothHelper.connect();
 
-        this.controlMode = new FlickAndSweepControlMode();
+        this.controlMode = new FlickAndSweepControlMode(this.bluetoothHelper);
     }
 
     /**
